@@ -5,6 +5,8 @@ Django==5.1.4
 django-js-asset==3.0.1
 django-summernote==0.8.20.0
 django-tinymce==4.1.0
+gunicorn==23.0.0
+packaging==24.2
 pillow==11.1.0
 six==1.17.0
 sqlparse==0.5.3
