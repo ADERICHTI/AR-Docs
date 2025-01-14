@@ -1,0 +1,374 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}
+  <title>{{Doc.title}}</title>
+{% endblock title %}
+
+{% block style %}
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Hind+Madurai:wght@300;400;500;600;700&family=Poppins:ital,wght@0,400;1,900&family=Quicksand:wght@300..700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Share+Tech&display=swap');
+    :root {
+      --light: #fdfdfd;
+      --dark: #333;
+      --lighttext: #fff;
+      --darktext: #000;
+      --darkborder: #00000056;
+      --lightborder: #ffffff56;
+      --darknav: #c2c2c2;
+    }
+
+    body {
+      background-color: var(--light);
+      height: 100%;
+      font-family: Poppins;
+      margin: 0;
+      transition: .7s;
+    }
+
+    body.dark {
+      background-color: var(--dark);
+    }
+    
+    .navbar {
+      background-color: var(--dark);
+      color: var(--lighttext);
+      display: flex;
+      justify-content: space-between;
+      padding: 7px;
+      margin: auto;
+      position: fixed;
+      top: 0;
+      left: 0;
+      min-width: 99vw;
+      box-shadow: 1px 1px 1px var(--darktext);
+      z-index: 1000;
+      overflow: hidden;
+      transition: .8s;
+    }
+
+    .body.dark .navbar {
+      background-color: var(--darknav);
+      color: var(--darktext);
+      box-shadow: 1px 1px 1px var(--lighttext);
+    }
+
+    .navbar .logo {
+      font-size: 1.5rem;
+      /* font-family: Poppins; */
+      font-weight: 900;
+      padding-top: 7px;
+      max-height: 60px;
+      /* overflow: hidden; */
+      transform: translateY(10px);
+      animation: moveUpDown 14s ease-in-out infinite;
+    }
+
+    @keyframes moveUpDown {
+      50% {
+        transform: translateY(-60px);
+      }
+      100% {
+        transform: translateY(10px);
+      }
+    }
+    
+    .navbar .menu li {
+      list-style: none;
+      margin-right: 35px;
+      /* transition: 1s; */
+    }
+
+    .navbar .menu li .search {
+      width: 210px;
+      height: 19px;
+      border-radius: 5px;
+      border-color: light-dark(transparent, transparent);
+      background-color: var(--lighttext);
+      color: var(--darktext);
+      transition: .9s;
+    }
+
+    .body.dark .navbar .menu li .search {
+      background-color: var(--darktext);
+      color: var(--lighttext);
+    }
+
+          
+    .navbar .menu li .search.button {
+      border-radius: 50%;
+      cursor: pointer;
+    }
+    
+    .body.dark .navbar .menu li button {
+      background-color: var(--darkborder);
+    }
+    
+    .navbar .menu li .search.button {
+      border-radius: 50%;
+      cursor: pointer;
+    }
+          
+    .body.dark .navbar .menu li button {
+      background-color: var(--darkborder);
+    }
+
+    .body.dark .navbar .menu li .search.button:hover {
+      box-shadow: 1px 1px 10px var(--light);
+    }
+
+    .navbar .menu li .search.button:hover {
+      box-shadow: 1px 1px 10px var(--dark);
+    }
+
+    .body.dark .navbar .menu li .search.button:active {
+      box-shadow: 1px 1px 20px var(--light);
+    }
+
+    .navbar .menu li .search.button:active {
+      box-shadow: 1px 1px 20px var(--dark);
+    }
+      .page {
+        height: 100%;
+        width: 100%;
+        padding: 90px 10px;
+        display: flex;
+      }
+
+      .page .post {
+        max-width: 95%;
+        min-width: 95%;
+        max-height: 95%;
+        min-height: 95%;
+        overflow: hidden;
+        color: var(--darktext);
+        padding: 7px;
+        /* border-radius: 10px; */
+        cursor: pointer;
+        transition: .7s;
+        /* box-shadow: 1px 1px 5px black; */
+        background-color: var(--light);
+        padding: 10px;
+      }
+
+      /* .page .post svg {
+        height: 250px;
+      } */
+
+      .page .post:hover {
+        box-shadow: 1px 1px 5px var(--darktext);
+      }
+
+      .body.dark .page .post{
+        color: var(--lighttext);
+        background-color: var(--dark);
+      }
+      
+      .body.dark .page .post:hover {
+        box-shadow: 1px 1px 5px var(--lighttext);
+      }
+
+      .page .post h1{
+        border-bottom: 3px solid var(--darkborder);
+      }
+
+      .body.dark .page .post h1{
+        border-bottom: 3px solid var(--lightborder);
+      }
+      
+      .page .post textarea {
+        width: 95%;
+        min-height: 150px;
+      }
+      
+      .body.dark .page .post textarea {
+        background-color: var(--darkborder);
+        color: var(--lighttext);
+      }
+      
+      .footer {
+        right: 0;
+        bottom: 0;
+        background-color: var(--dark);
+        color: var(--lighttext);
+        display: flex;
+        justify-content: space-between;
+        padding: 7px;
+        margin: auto;
+        position: fixed;
+        min-width: 99vw;
+        box-shadow: 1px 1px 1px var(--darktext);
+        z-index: 1000;
+        overflow: hidden;
+        transition: .8s;
+      }
+
+      .body.dark .footer {
+      background-color: var(--darknav);
+      color: var(--darktext);
+      box-shadow: 1px 1px 1px var(--lighttext);
+    }
+
+      .footer p {
+        margin: 0px 21px;
+        cursor: pointer;
+      }
+
+      .footer.load p {
+        background-color: var(--darknav);
+        color: var(--darktext);
+        padding: 5px;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .footer.load p:hover {
+        box-shadow: 1px 1px 10px var(--darknav);
+      }
+
+      .footer.load p:active {
+        box-shadow: 1px 1px 5px var(--darknav);
+      }
+      
+      .body.dark .footer.load p {
+        background-color: var(--dark);
+        color: var(--lighttext);
+      }
+
+      .body.dark .footer.load p:hover {
+        box-shadow: 1px 1px 10px var(--lighttext);
+      }
+
+      .body.dark .footer.load p:active {
+        box-shadow: 1px 1px 5px var(--lighttext);
+      }
+
+      .page .post .copy {
+        background-color: var(--darknav);
+        color: var(--darktext);
+        padding: 5px;
+        width: fit-content;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: .1s;
+      }
+      
+      .page .post .copy:hover {
+        box-shadow: 1px 1px 10px var(--dark);
+      }
+
+      .page .post .copy:active {
+        box-shadow: 1px 1px 5px var(--dark);
+      }
+      
+      .body.dark .page .post .copy {
+        background-color: var(--darknav);
+        color: var(--darktext);
+      }
+
+      .body.dark .page .post .copy:hover {
+        box-shadow: 1px 1px 10px var(--lighttext);
+      }
+
+      .body.dark .page .post .copy:active {
+        box-shadow: 1px 1px 5px var(--lighttext);
+      }
+      /* @keyframes shift {
+        to
+      } */
+
+      /* .page .doc h3 {
+        background-color: red;
+      } */
+      /* 231 198 */
+  </style>
+{% endblock style %}
+
+{% block navbar %}
+<header>
+  <nav class="navbar dark">
+    <div class="logo">AR Docs
+      <h5>{{Document.title}}</h5>
+    </div>
+    <ul class="menu">
+      <li>
+        <form action="{% url "search_result" %}" method="post">
+          {% csrf_token %}
+          <input type="text" class="search" placeholder="🔎Search..." name="search_input" >
+          
+            <button type="submit" style="border-radius: 50px;
+            cursor: pointer;"><span class="search button"> </span>🔎</button>
+         
+          <span class="search button theme">🌙</span>
+        </form>
+      </li>
+    </ul>
+  </nav>
+</header>
+{% endblock navbar %}
+
+{% block section %}
+  <section class="page">
+
+    <div class="post">
+      <h1>{{Doc.title}}</h1>
+      <p>{{Doc.content}}</p>
+      <p>
+        <h1>Code snippet</h1>
+        <textarea name="" id="">
+          {{Doc.code}}
+        </textarea>
+        <p class="copy">Copy</p>
+      </p>
+    </div>
+  </section>
+{% endblock section %}
+
+{% block footer %}
+  <footer>
+    <nav class="footer load">
+      <a href="{% url "document_edit" Doc.pk %}" style="text-decoration: none;
+      "><p>Edit</p></a>
+      <a href="{% url "document_delete" Doc.pk %}" style="text-decoration: none;
+      "><p>Delete</p></a>
+    </nav>
+  </footer>
+{% endblock footer %}
+
+{% block script %}
+<script>
+  let themeBtn = document.querySelector('.search.button.theme');
+  let body = document.querySelector('.body')
+  let code = document.querySelector(".post textarea");
+  let copybtn = document.querySelector(".post .copy");
+  
+  themeBtn.onclick = () => {
+      body.classList.toggle('dark')
+      if (themeBtn.textContent =='🌙'){
+        themeBtn.textContent = '☀️';
+      }
+      else {
+        themeBtn.textContent = '🌙';
+      }
+    }
+
+    copybtn.onclick= () => {
+
+      navigator.clipboard.writeText(code.value).then(() => {
+          copybtn.textContent = "Copied";
+      })
+
+      clearInterval(refreshInterval);
+      refreshInterval = setInterval(() => {
+      
+      copybtn.textContent = "Copy";
+  }  
+  , 1000)
+  }
+
+
+  refreshInterval = setInterval(() => {
+      copybtn.textContent = "Copy";
+  }  
+  , 1000)
+  </script>
+{% endblock script %}

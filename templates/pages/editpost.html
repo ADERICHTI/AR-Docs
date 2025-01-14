@@ -1,0 +1,32 @@
+{% extends "pages/document.html" %}
+
+{% block navbar %}
+<header>
+  <nav class="navbar dark">
+    <div class="logo">AR Docs
+      <h5>Edit Post</h5>
+    </div>
+    <ul class="menu">
+      <li>
+        <small>Edit Post</small>
+      </li>
+    </ul>
+  </nav>
+</header>
+{% endblock navbar %}
+
+{% block section %}
+  <section class="page">
+    <div class="post">
+      <h1>Edit Document📃</h1>
+      <form method="post">
+        {% csrf_token %}
+        {{ form }}
+        <button type="submit">Save Changes</button>
+      </form>
+    </div>
+  </section>
+{% endblock section %}
+
+{% block footer %}
+{% endblock footer %}

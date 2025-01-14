@@ -1,0 +1,32 @@
+{% extends "pages/document.html" %}
+
+{% block navbar %}
+<header>
+  <nav class="navbar dark">
+    <div class="logo">AR Docs
+      <h5>Delete Post</h5>
+    </div>
+    <ul class="menu">
+      <li>
+        <small>Delete Post</small>
+      </li>
+    </ul>
+  </nav>
+</header>
+{% endblock navbar %}
+
+{% block section %}
+  <section class="page">
+    <div class="post">
+      <h1>Delete Document📄</h1>
+      <p>Are you sure you want to delete this document?</p>
+      <form method="post">
+        {% csrf_token %}
+        <button type="submit">Delete</button>
+      </form>
+    </div>
+  </section>
+{% endblock section %}
+
+{% block footer %}
+{% endblock footer %}

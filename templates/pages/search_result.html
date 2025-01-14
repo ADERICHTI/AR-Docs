@@ -1,0 +1,51 @@
+{% extends "pages/layout.html" %}
+
+{% block title %}
+  <title>Search: {{search_input}} </title>
+{% endblock title %}
+
+{% block style2 %}
+  <style>
+    .page h1 {
+      color: #555;
+      width: 100vw;
+      text-align: center;
+      font-size: 100px;
+    }
+
+    .page h2 {
+      width: 100vw;
+    }
+
+    .page h2 a {
+      color: #333;
+      {% comment %} text-decoration: under; {% endcomment %}
+      {% comment %} width: 100vw; {% endcomment %}
+      font-size: 21px; 
+    }
+
+    .body.dark .page h1 {
+      color: #ccc;
+    }
+
+    .body.dark .page h2 a {
+      color: #fefefe;
+    }
+  </style>
+{% endblock style2 %}
+
+{% block section %}
+  <section class="page">
+    {% if search_r_lst %}
+      {% for srl in search_r_lst  %}
+       <h2><a href="{% url "document" srl.pk srl.document.pk%}">{{srl.title}}</a></h2>
+      {% endfor %}
+    {% else %}
+      <h1>{{msgs.0}} </h1> 
+    {% endif %}
+  </section>
+{% endblock section %}
+
+
+{% block footer %}
+{% endblock footer %}
