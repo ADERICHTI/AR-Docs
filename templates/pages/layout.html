@@ -303,9 +303,9 @@
         padding: 7px;
         width: fit-content;
         position: absolute;
-        top: 67px;
+        top: 84px;
         right: 10px;
-        transform: translateY(-50px);
+        transform: translateY(-70px);
         transition: 1s;
         cursor: pointer;
         color: var(--darktext);
@@ -473,7 +473,7 @@
     })
   })
 
-  page.addEventListener('mouseout', () => {
+  page.addEventListener('click', () => {
     logoutbtns.forEach((logoutbtn) => {
       logoutbtn.classList.remove('load')
     })
