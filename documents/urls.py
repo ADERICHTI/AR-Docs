@@ -11,6 +11,6 @@ urlpatterns = [
     path('docs/document/<int:pk>/edit/', views.DocumentEditView.as_view(), name='document_edit'),
     path('docs/document/<int:pk>/delete/', views.DocumentDeleteView.as_view(), name='document_delete'),
     path('search_result/', views.search_result, name='search_result'),
-    path('login/', views.log_in, name='login'),
-    path('logout/', views.log_out, name='logout'),
+    path('accounts/login/', views.log_in, name='login'),
+    path('accounts/logout/', views.log_out, name='logout'),
 ]
