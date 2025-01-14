@@ -287,6 +287,12 @@
     </style>
   {% endblock style %}
   
+    <style>
+      .page {
+        padding: 114px 10px;
+      }
+    </style>
+
   {% block style2 %}
   {% endblock style2 %}
   
@@ -298,7 +304,7 @@
         width: fit-content;
         position: absolute;
         top: 67px;
-        right: 230px;
+        right: 10px;
         transform: translateY(-50px);
         transition: 1s;
         cursor: pointer;
@@ -318,7 +324,7 @@
       }
 
       .logout.home {
-        right: 350px;
+        left: 10px;
       }
     </style>
    
@@ -331,7 +337,7 @@
     <header>
       <nav class="navbar dark">
         <div class="logo">AR Docs
-          <h5>Document</h5>
+          {% comment %} <h5>Document</h5> {% endcomment %}
         </div>
         <ul class="menu">
           <li>
