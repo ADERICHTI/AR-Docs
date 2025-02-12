@@ -2,7 +2,7 @@
     "version": 2,
     "builds": [
         {
-            "src": "ARDocs/wsgi.py",
+            "src": "AR-Docs/wsgi.py",
             "use": "@vercel/python",
             "config": {
                 "maxLambdaSize": "15mb",
@@ -13,7 +13,7 @@
     "routes": [
         {
         "src": "/(.*)",
-        "dest": "ARDocs/wsgi.py"
+        "dest": "AR-Docs/wsgi.py"
         }
     ]
 }
