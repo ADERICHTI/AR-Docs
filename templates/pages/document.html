@@ -329,7 +329,7 @@
       <textarea class="pt" readonly>{{Doc.content}}</textarea>
       <p>
         <h1>Code snippet</h1>
-        <textarea name="" id="">
+        <textarea name="" id="forcode">
           {{Doc.code}}
         </textarea>
         <p class="copy">Copy</p>
@@ -353,7 +353,7 @@
 <script>
   let themeBtn = document.querySelector('.search.button.theme');
   let body = document.querySelector('.body')
-  let code = document.querySelector(".post textarea");
+  let code = document.querySelector(".post #forcode");
   let copybtn = document.querySelector(".post .copy");
   
   themeBtn.onclick = () => {
