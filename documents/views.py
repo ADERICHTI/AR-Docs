@@ -29,7 +29,7 @@ def log_out(request):
    logout(request)
    return redirect('login')
 
-@login_required
+
 #Home page displaying all document categories
 def home_page(request):
   if request.method == 'POST':
